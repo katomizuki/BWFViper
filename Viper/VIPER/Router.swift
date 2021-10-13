@@ -10,9 +10,9 @@ class UserRouter:AnyRouter {
     var entry: EntryPoint?
     static func start() -> AnyRouter {
         let router = UserRouter()
-        var view:AnyView = UserViewController()
-        var presenter:AnyPresenter = UserPresenter()
-        var interactor:AnyInteractor = UserInteractor()
+        var view:AnyView = BWFViewController()
+        var presenter:AnyPresenter = BWFPresenter()
+        var interactor:AnyInteractor = BWFInteractor()
         view.presentar = presenter
         interactor.presentar = presenter
         presenter.router = router

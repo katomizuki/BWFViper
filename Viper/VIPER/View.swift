@@ -7,11 +7,11 @@ import UIKit
 
 protocol AnyView {
     var presentar:AnyPresenter? { get set }
-    func update(with users: [BWFEntity])
+    func update(with bwfEntites: [BWFEntity])
     func update(with error: String)
 }
 
-class UserViewController:UIViewController,AnyView {
+class BWFViewController:UIViewController,AnyView {
     var presentar: AnyPresenter?
     private let tableView:UITableView = {
         let tb = UITableView()
@@ -19,7 +19,7 @@ class UserViewController:UIViewController,AnyView {
         tb.isHidden = true
         return tb
     }()
-    var users:[User] = []
+    var entities:[BWFEntity] = []
     private let label:UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -45,9 +45,9 @@ class UserViewController:UIViewController,AnyView {
         tableView.frame = view.bounds
     }
     
-    func update(with users: [User]) {
+    func update(with bwfEntites: [BWFEntity]) {
         DispatchQueue.main.async {
-            self.users = users
+            self.entities = bwfEntites
             self.tableView.reloadData()
             self.tableView.isHidden = false
         }
@@ -56,7 +56,7 @@ class UserViewController:UIViewController,AnyView {
     func update(with error: String) {
         print(error)
         DispatchQueue.main.async {
-            self.users = []
+            self.entities = []
             self.label.text = error
             self.tableView.isHidden = true
             self.label.isHidden = false
@@ -66,14 +66,14 @@ class UserViewController:UIViewController,AnyView {
     
 }
 
-extension UserViewController:UITableViewDelegate,UITableViewDataSource {
+extension BWFViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return entities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = users[indexPath.row].name
+        cell.textLabel?.text = entities[indexPath.row].name
         return cell
     }
     
