@@ -1,6 +1,7 @@
-
 import Foundation
 import UIKit
+import SDWebImage
+
 class BWFCell:UITableViewCell {
     
     var bwfEntity:BWFEntity? {
@@ -18,6 +19,7 @@ class BWFCell:UITableViewCell {
         imageView.backgroundColor = .systemPurple
         imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     private let rankLabel:UILabel = {
@@ -48,5 +50,29 @@ class BWFCell:UITableViewCell {
             return
         }
         label.text = bwfEntity.name
+        switch bwfEntity.name {
+        case "Kento MOMOTA":
+            playerImage.image = UIImage(named: "桃田")
+        case "Viktor AXELSEN":
+            playerImage.image = UIImage(named: "アクセルセン")
+        case "Anders ANTONSEN":
+            playerImage.image = UIImage(named: "アントセン")
+        case "CHOU Tien Chen":
+            playerImage.image = UIImage(named: "周天成")
+        case "Anthony Sinisuka GINTING":
+            playerImage.image = UIImage(named: "ギンティン")
+        case "CHEN Long":
+            playerImage.image = UIImage(named: "チェンロン")
+        case "Jonatan CHRISTIE":
+            playerImage.image = UIImage(named: "ジョナサン")
+        case "LEE Zii Jia":
+            playerImage.image = UIImage(named: "リージージャ")
+        case "NG Ka Long Angus":
+            playerImage.image = UIImage(named: "NG")
+        case "WANG Tzu Wei":
+            playerImage.image = UIImage(named: "王")
+        default:
+            break
+        }
     }
 }
