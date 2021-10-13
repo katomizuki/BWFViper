@@ -7,7 +7,7 @@ protocol AnyPresenter {
     var router:AnyRouter? { get set }
     var interactor:AnyInteractor? { get set }
     var view:AnyView? { get set }
-    func interactorDidFetchUsers(with result:Result<[User],Error>)
+    func interactorDidFetchUsers(with result:Result<[BWFEntity],Error>)
 }
 
 class UserPresenter:AnyPresenter {
@@ -23,10 +23,10 @@ class UserPresenter:AnyPresenter {
         interactor?.getUsers()
     }
     
-    func interactorDidFetchUsers(with result: Result<[User], Error>) {
+    func interactorDidFetchUsers(with result: Result<[BWFEntity], Error>) {
         switch result {
-        case .success(let users):
-            view?.update(with: users)
+        case .success(let entities):
+            view?.update(with: entities)
         case .failure:
             view?.update(with: "something went wrong")
         }

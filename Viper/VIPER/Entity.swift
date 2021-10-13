@@ -1,14 +1,12 @@
-//
-//  Entity.swift
-//  Viper
-//
-//  Created by ミズキ on 2021/10/13.
-//
-
 import Foundation
-// Router
-//Object
-
-struct User:Codable {
+//Mark:Entity-BWFEntity
+struct BWFEntity:Codable {
     let name:String
+    let earnings:String
+    let loss:String
+    let points:String
+    let rank:Int
+    let ranking_changes:Int
+    let tmntsPlayed:Int
+    let win:Int
 }

@@ -7,7 +7,7 @@ import UIKit
 
 protocol AnyView {
     var presentar:AnyPresenter? { get set }
-    func update(with users: [User])
+    func update(with users: [BWFEntity])
     func update(with error: String)
 }
 
@@ -29,17 +29,22 @@ class UserViewController:UIViewController,AnyView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+    }
+    
+    private func setupTableView() {
         view.addSubview(tableView)
         view.addSubview(label)
         tableView.delegate = self
         tableView.dataSource = self
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .white
         label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+    
     func update(with users: [User]) {
         DispatchQueue.main.async {
             self.users = users
