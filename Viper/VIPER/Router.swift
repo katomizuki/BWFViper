@@ -26,6 +26,7 @@ class UserRouter:AnyRouter {
         presenter.view = view
         //Mark setup interactor
         presenter.interactor = interactor
+        //Mark setup Entity
         router.entry = view as? EntryPoint
         return router
     }

@@ -12,7 +12,7 @@ class BWFViewController:UIViewController,AnyView {
     var presentar: AnyPresenter?
     private let tableView:UITableView = {
         let tb = UITableView()
-        tb.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tb.register(BWFCell.self, forCellReuseIdentifier: "cellId")
         tb.isHidden = true
         return tb
     }()
@@ -23,6 +23,47 @@ class BWFViewController:UIViewController,AnyView {
         label.isHidden = true
         return label
     }()
+    private let MSButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("男子シングルス", for: .normal)
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        button.backgroundColor = .magenta
+        return button
+    }()
+    private let MDButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("男子ダブルス", for: .normal)
+        button.backgroundColor = .systemGreen
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        return button
+    }()
+    private let WSButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("女子シングルス", for: .normal)
+        button.backgroundColor = .systemMint
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        return button
+    }()
+    private let WDButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("女子ダブルス", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        return button
+    }()
+    private let MIXButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("ミックス", for: .normal)
+        button.backgroundColor = .systemPurple
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        return button
+    }()
+    
     
     //Mark LifeCycle
     override func viewDidLoad() {
@@ -32,16 +73,19 @@ class BWFViewController:UIViewController,AnyView {
     
     //Mark setupMethod
     private func setupTableView() {
+        let stackview = UIStackView(arrangedSubviews: [MSButton,MDButton,WSButton,WDButton,MIXButton])
+        stackview.axis = .horizontal
+        stackview.spacing = 0
+        stackview.distribution = .fillEqually
+        view.addSubview(stackview)
         view.addSubview(tableView)
         view.addSubview(label)
         tableView.delegate = self
         tableView.dataSource = self
         view.backgroundColor = .white
         label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+        tableView.anchor(top:view.safeAreaLayoutGuide.topAnchor,bottom:view.bottomAnchor, left:view.leftAnchor,right: view.rightAnchor,paddingTop:100,paddingBottom:0, paddingRight:0, paddingLeft: 0)
+        stackview.anchor(top:view.safeAreaLayoutGuide.topAnchor,bottom:tableView.topAnchor, left:view.leftAnchor,right:view.rightAnchor,paddingTop: 10,paddingBottom:5, paddingRight:0, paddingLeft: 0)
     }
     
     //Mark DelegateMethod
@@ -64,20 +108,23 @@ class BWFViewController:UIViewController,AnyView {
             self.label.isHidden = false
         }
     }
-    
-    
+    //Mark selector
+    @objc private func handleTap() {
+        print(#function)
+    }
 }
-
+//Mark Extension uitableViewdelegate
 extension BWFViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = entities[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! BWFCell
+        cell.bwfEntity = entities[indexPath.row]
         return cell
     }
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 10
+    }
 }

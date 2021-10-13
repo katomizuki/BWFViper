@@ -16,6 +16,8 @@
 		D3582B0927164E6F00BFFDA8 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3582B0827164E6F00BFFDA8 /* Interactor.swift */; };
 		D3582B0B27164EAE00BFFDA8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3582B0A27164EAE00BFFDA8 /* Entity.swift */; };
 		D3582B0D27164EBA00BFFDA8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3582B0C27164EBA00BFFDA8 /* Router.swift */; };
+		D3E57A152716890200204685 /* BWFCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E57A142716890200204685 /* BWFCell.swift */; };
+		D3E57A1727168A1800204685 /* Anchor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E57A1627168A1800204685 /* Anchor-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D3582B0827164E6F00BFFDA8 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		D3582B0A27164EAE00BFFDA8 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D3582B0C27164EBA00BFFDA8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D3E57A142716890200204685 /* BWFCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWFCell.swift; sourceTree = "<group>"; };
+		D3E57A1627168A1800204685 /* Anchor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchor-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				D3582B0827164E6F00BFFDA8 /* Interactor.swift */,
 				D3582B0A27164EAE00BFFDA8 /* Entity.swift */,
 				D3582B0C27164EBA00BFFDA8 /* Router.swift */,
+				D3E57A142716890200204685 /* BWFCell.swift */,
+				D3E57A1627168A1800204685 /* Anchor-Extension.swift */,
 			);
 			path = VIPER;
 			sourceTree = "<group>";
@@ -159,8 +165,10 @@
 				D3582B0527164E5300BFFDA8 /* View.swift in Sources */,
 				D3582B0B27164EAE00BFFDA8 /* Entity.swift in Sources */,
 				D3582B0727164E6200BFFDA8 /* Presenter.swift in Sources */,
+				D3E57A1727168A1800204685 /* Anchor-Extension.swift in Sources */,
 				D3582AEE27164C9A00BFFDA8 /* AppDelegate.swift in Sources */,
 				D3582AF027164C9A00BFFDA8 /* SceneDelegate.swift in Sources */,
+				D3E57A152716890200204685 /* BWFCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

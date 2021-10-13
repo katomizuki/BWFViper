@@ -19,6 +19,7 @@ class BWFInteractor:AnyInteractor {
                 return
             }
             guard let data = data else { return }
+            print(data)
             do {
                 let entities = try JSONDecoder().decode([BWFEntity].self, from: data)
                 //Mark resultをPresentarに通達する

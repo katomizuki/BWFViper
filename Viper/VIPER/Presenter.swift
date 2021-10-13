@@ -28,9 +28,11 @@ class BWFPresenter:AnyPresenter {
     //Mark Interactorからきた結果を受け取り & updateUIの指示をViewに指示する
     func interactorDidFetchBWF(with result: Result<[BWFEntity], Error>) {
         //result success⇨update UI(tableView) failure⇨ update UI(update Label)
+      
         switch result {
         case .success(let entities):
             view?.update(with: entities)
+            print("😀")
         case .failure:
             view?.update(with: "something went wrong")
         }
