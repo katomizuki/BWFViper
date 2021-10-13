@@ -1,17 +1,14 @@
-
 import Foundation
 import UIKit
-
-//ViewController
-//Protocol
 
 protocol AnyView {
     var presentar:AnyPresenter? { get set }
     func update(with bwfEntites: [BWFEntity])
     func update(with error: String)
 }
-
+//Mark View Viewに集中する
 class BWFViewController:UIViewController,AnyView {
+    //Mark Properties
     var presentar: AnyPresenter?
     private let tableView:UITableView = {
         let tb = UITableView()
@@ -27,11 +24,13 @@ class BWFViewController:UIViewController,AnyView {
         return label
     }()
     
+    //Mark LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
     
+    //Mark setupMethod
     private func setupTableView() {
         view.addSubview(tableView)
         view.addSubview(label)
@@ -45,7 +44,9 @@ class BWFViewController:UIViewController,AnyView {
         tableView.frame = view.bounds
     }
     
+    //Mark DelegateMethod
     func update(with bwfEntites: [BWFEntity]) {
+        //MainQueue Update UI
         DispatchQueue.main.async {
             self.entities = bwfEntites
             self.tableView.reloadData()
@@ -55,6 +56,7 @@ class BWFViewController:UIViewController,AnyView {
     
     func update(with error: String) {
         print(error)
+        //MainQueue UPdate UI
         DispatchQueue.main.async {
             self.entities = []
             self.label.text = error
