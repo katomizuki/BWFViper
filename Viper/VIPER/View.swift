@@ -103,14 +103,24 @@ class BWFViewController:UIViewController,AnyView {
         //MainQueue UPdate UI
         DispatchQueue.main.async {
             self.entities = []
-            self.label.text = error
             self.tableView.isHidden = true
             self.label.isHidden = false
         }
     }
     //Mark selector
-    @objc private func handleTap() {
+    @objc private func handleTap(sender:UIButton) {
         print(#function)
+        if sender == MSButton {
+            presentar?.didTappedButton(text:"men-singles")
+        } else if sender == MDButton {
+            presentar?.didTappedButton(text:"men-doubles")
+        } else if sender == WSButton {
+            presentar?.didTappedButton(text:"women-singles")
+        } else if sender == WDButton {
+            presentar?.didTappedButton(text:"women-doubles")
+        } else {
+            presentar?.didTappedButton(text:"mixed-doubles")
+        }
     }
 }
 //Mark Extension uitableViewdelegate

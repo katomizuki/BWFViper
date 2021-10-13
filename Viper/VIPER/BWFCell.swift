@@ -8,9 +8,9 @@ class BWFCell:UITableViewCell {
             configure()
         }
     }
-    
     private let label:UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     private let playerImage:UIImageView = {
@@ -31,7 +31,7 @@ class BWFCell:UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .cyan
+        backgroundColor = .white
         addSubview(playerImage)
         addSubview(label)
 //        addSubview(rankLabel)
